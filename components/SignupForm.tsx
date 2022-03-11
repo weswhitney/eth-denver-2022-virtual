@@ -10,17 +10,17 @@ import {
 } from "@mui/material"
 import { Box } from "@mui/system"
 
-interface SignupFormProps {
-  handleEmailClick: () => void
-  handleMobileClick: () => void
-  formType: string
-}
+const SignupForm = () => {
+  const [formType, setFormType] = React.useState("email")
 
-const SignupForm = ({
-  handleEmailClick,
-  handleMobileClick,
-  formType,
-}: SignupFormProps) => {
+  const handleEmailClick = () => {
+    setFormType("email")
+  }
+
+  const handleMobileClick = () => {
+    setFormType("mobile")
+  }
+
   return (
     <Grid item xs={6} sx={{ mt: 6, pb: 8 }}>
       <h3>Sign up</h3>
