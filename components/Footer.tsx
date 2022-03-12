@@ -18,7 +18,7 @@ function Copyright() {
   )
 }
 
-export default function StickyFooter() {
+export default function Footer() {
   return (
     <Box
       sx={{

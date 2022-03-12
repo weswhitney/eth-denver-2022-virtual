@@ -12,7 +12,6 @@ function App() {
         <InfoBox />
         <SignupForm />
       </Grid>
-      <DidForm />
     </Layout>
   )
 }

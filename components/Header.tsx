@@ -1,11 +1,22 @@
-import { Grid, Card, CardMedia, Button } from "@mui/material"
+import {
+  Grid,
+  Card,
+  CardMedia,
+  Button,
+  IconButton,
+  Avatar,
+} from "@mui/material"
 import { Box } from "@mui/system"
+import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined"
+import React from "react"
+import { deepPurple } from "@mui/material/colors"
 
 interface HeaderProps {
   handleClickDidOpen: () => void
+  handleClickAvatarOpen: () => void
 }
 
-const Header = ({ handleClickDidOpen }: HeaderProps) => {
+const Header = ({ handleClickDidOpen, handleClickAvatarOpen }: HeaderProps) => {
   return (
     <Grid container>
       <Grid item xs={1}>
@@ -22,7 +33,16 @@ const Header = ({ handleClickDidOpen }: HeaderProps) => {
       <Grid item xs={6}></Grid>
       <Grid item>
         <Box>
-          <Button onClick={handleClickDidOpen}>Secure with did</Button>
+          <IconButton aria-label="wallet" onClick={handleClickDidOpen}>
+            <AccountBalanceWalletOutlinedIcon fontSize="large" />
+          </IconButton>
+        </Box>
+      </Grid>
+      <Grid item>
+        <Box>
+          <IconButton onClick={handleClickAvatarOpen}>
+            <Avatar sx={{ bgcolor: deepPurple[500] }}>WW</Avatar>
+          </IconButton>
         </Box>
       </Grid>
     </Grid>
