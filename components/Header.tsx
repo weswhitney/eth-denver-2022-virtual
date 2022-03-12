@@ -9,14 +9,47 @@ import {
 import { Box } from "@mui/system"
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined"
 import React from "react"
-import { deepPurple } from "@mui/material/colors"
 
 interface HeaderProps {
   handleClickDidOpen: () => void
   handleClickAvatarOpen: () => void
+  avatarName: string
 }
 
-const Header = ({ handleClickDidOpen, handleClickAvatarOpen }: HeaderProps) => {
+const Header = ({
+  handleClickDidOpen,
+  handleClickAvatarOpen,
+  avatarName,
+}: HeaderProps) => {
+  function stringToColor(string: string) {
+    let hash = 0
+    let i
+
+    /* eslint-disable no-bitwise */
+    for (i = 0; i < string.length; i += 1) {
+      hash = string.charCodeAt(i) + ((hash << 5) - hash)
+    }
+
+    let color = "#"
+
+    for (i = 0; i < 3; i += 1) {
+      const value = (hash >> (i * 8)) & 0xff
+      color += `00${value.toString(16)}`.substr(-2)
+    }
+    /* eslint-enable no-bitwise */
+
+    return color
+  }
+
+  function stringAvatar(name: string) {
+    return {
+      sx: {
+        bgcolor: stringToColor(name),
+      },
+      children: `${name.split(" ")[0][0]}`,
+    }
+  }
+
   return (
     <Grid container>
       <Grid item xs={1}>
@@ -41,7 +74,7 @@ const Header = ({ handleClickDidOpen, handleClickAvatarOpen }: HeaderProps) => {
       <Grid item>
         <Box>
           <IconButton onClick={handleClickAvatarOpen}>
-            <Avatar sx={{ bgcolor: deepPurple[500] }}>WW</Avatar>
+            <Avatar {...stringAvatar(avatarName)} />
           </IconButton>
         </Box>
       </Grid>

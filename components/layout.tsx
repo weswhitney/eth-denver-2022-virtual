@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Header from "./Header"
 import Container from "@mui/material/Container"
 import Footer from "./Footer"
@@ -20,6 +20,10 @@ export default function Layout({ children }) {
   const [name, setName] = useState("")
   const [loaded, setLoaded] = useState(false)
   const [didLocal, setDidLocal] = useState("")
+
+  useEffect(() => {
+    readProfile()
+  }, [])
 
   async function connect() {
     const addresses = await window.ethereum.request({
@@ -95,6 +99,7 @@ export default function Layout({ children }) {
         <Header
           handleClickDidOpen={handleClickDidOpen}
           handleClickAvatarOpen={handleClickAvatarOpen}
+          avatarName={name}
         />
         {children}
       </Container>
@@ -108,7 +113,7 @@ export default function Layout({ children }) {
       <Dialog open={openAvatar} onClose={handleClickAvatarClose}>
         <DialogContent>
           <Box noValidate sx={{ mt: 1, textAlign: "center" }}>
-            <Typography>{name}</Typography>
+            <Typography>Digital Identity</Typography>
             <Typography>{didLocal}</Typography>
           </Box>
         </DialogContent>
