@@ -97,6 +97,7 @@ export default function Layout({ children }) {
     <>
       <Container component="main" maxWidth="lg">
         <Header
+          readProfile={readProfile}
           handleClickDidOpen={handleClickDidOpen}
           handleClickAvatarOpen={handleClickAvatarOpen}
           avatarName={name}

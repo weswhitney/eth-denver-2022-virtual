@@ -21,35 +21,30 @@ function Copyright() {
 export default function Footer() {
   return (
     <Box
+      component="footer"
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "27vh",
+        py: 3,
+        px: 2,
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? theme.palette.grey[200]
+            : theme.palette.grey[800],
       }}
     >
-      <Box
-        component="footer"
-        sx={{
-          py: 3,
-          px: 2,
-          mt: "auto",
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container>
-            <Grid item xs={10}>
-              <Copyright />
-            </Grid>
-            <Grid item xs={2}>
-              Powered by Energy Web
-            </Grid>
+      <Container maxWidth="lg">
+        <Grid container>
+          <Grid item xs={10}>
+            <Copyright />
           </Grid>
-        </Container>
-      </Box>
+          <Grid item xs={2}>
+            Powered by Energy Web
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   )
 }

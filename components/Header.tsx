@@ -8,19 +8,25 @@ import {
 } from "@mui/material"
 import { Box } from "@mui/system"
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined"
-import React from "react"
+import React, { useEffect } from "react"
 
 interface HeaderProps {
   handleClickDidOpen: () => void
   handleClickAvatarOpen: () => void
   avatarName: string
+  readProfile: () => void
 }
 
 const Header = ({
   handleClickDidOpen,
   handleClickAvatarOpen,
   avatarName,
+  readProfile,
 }: HeaderProps) => {
+  useEffect(() => {
+    readProfile()
+  })
+
   function stringToColor(string: string) {
     let hash = 0
     let i
